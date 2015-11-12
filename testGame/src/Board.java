@@ -16,7 +16,6 @@ public class Board extends JPanel {
         int w= bubble.getWidth(this);
         int h = bubble.getHeight(this);
         setPreferredSize(new Dimension(w,h));
-
     }
     private void loadImage(){
         ImageIcon ii = new ImageIcon("bubble_green.png");
