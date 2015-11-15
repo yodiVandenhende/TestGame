@@ -2,8 +2,10 @@ import sun.plugin.javascript.navig.ImageArray;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Gebruiker on 13/11/2015.
@@ -11,16 +13,22 @@ import java.util.List;
 public class Bow {
     private int x;
     private int y;
-    private double arc;
+    private int arc;
+    private int turnSpeed;
     private Image image;
     private Bubble toShoot;
+    private AffineTransform trans;
 
     public Bow()
     {
         this.x = 100;
         this.y = 830;
+        this.arc = 0;
+        this.turnSpeed = 1;
         toShoot = new Bubble(x+125,y+80,1);
         loadImage();
+        trans = new AffineTransform();
+        setTrans();
     }
 
     private void loadImage() {
@@ -28,17 +36,26 @@ public class Bow {
         image = ii.getImage();
     }
 
+    private void setTrans()
+    {
+        trans.translate(x,y);
+        trans.rotate(Math.toRadians(arc),150,85);
+    }
 
-    public int GetX()
+    public void TurnLeft()
     {
-        return  x;
+        arc -= turnSpeed;
+        setTrans();
     }
-    public int GetY()
+    public void TurnRight()
     {
-        return y;
+        arc += turnSpeed;
+        setTrans();
     }
+
     public void Draw(Graphics g){
-        g.drawImage(image,x,y, null);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(image,trans, null);
         toShoot.Draw(g);
     }
 

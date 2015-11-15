@@ -36,8 +36,8 @@ public class Bubble {
 
     public void shoot(double arc,int speed)
     {
-        ySpeed = Math.sin(arc) * speed;
-        xSpeed = Math.cos(arc) * speed;
+        ySpeed = Math.sin(Math.toRadians(arc)) * speed;
+        xSpeed = Math.cos(Math.toRadians(arc)) * speed;
     }
 
     private void Move()

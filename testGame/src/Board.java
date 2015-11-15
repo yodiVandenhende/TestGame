@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.*;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Board extends JPanel{
         bubbleInField =  new ArrayList<Bubble>();
         //CreatField();
         bow = new Bow();
-        testBubble.shoot(1,5);
+        testBubble.shoot(90,5);
 
         setDoubleBuffered(true);
 
@@ -32,6 +33,19 @@ public class Board extends JPanel{
         bubbleInField.add(new Bubble(150,0,4));
         bubbleInField.add(new Bubble(25,50,5));
         bubbleInField.add(new Bubble(75,50,6));
+    }
+
+    public void keyPressed(KeyEvent e)
+    {
+        int key = e.getKeyCode();
+        if(key == KeyEvent.VK_LEFT)
+        {
+            bow.TurnLeft();
+        }
+        if(key == KeyEvent.VK_RIGHT)
+        {
+            bow.TurnRight();
+        }
     }
     @Override
     public void paintComponent(Graphics g) {
