@@ -105,17 +105,16 @@ public class Bubble {
 
     }
     public int CountSameColor(Bubble origen,int count){
-        int res  = count;
+        int res  = count + 1 ;
         for (Bubble bubble: conectedBubbles)
         {
-            if(bubble != origen && bubble.color = color)
-            {
-                count++;
-                bubble.CountSameColor(this.=,res);
+            if(bubble != origen && bubble.color == color) {
+                res = bubble.CountSameColor(this, res);
             }
-            if(i!= origen && conectedBubbles[i] != null && conectedBubbles[i].GetColor() == color){
-
-            }
+        }
+        if(res > 3)
+        {
+            Pop();
         }
         res ++;
         return res;
@@ -126,21 +125,19 @@ public class Bubble {
         {
                 if(conectedBubbles[i] != null && conectedBubbles[i].GetColor() == color){
 
-                    res  = conectedBubbles[i].CountSameColor(i);
+                    res  = conectedBubbles[i].CountSameColor(this,i);
                 }
         }
         res ++;
         return res;
     }
-    public void Pop(Bubble origen){
-        for (Bubble toPop:conectedBubbles)
+    public void Pop(int origin){
+        for(Bubble toDisconect: conectedBubbles)
         {
 
-            if(toPop != origen && toPop.GetColor() == color){
-                toPop.Pop(this);
-            }
         }
     }
+    public void RemoveBubble(Bubble)
 
     public int GetColor(){
         return color;
