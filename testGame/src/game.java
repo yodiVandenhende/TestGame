@@ -13,6 +13,7 @@ public class game extends JFrame implements ActionListener, KeyListener{
 
     public game(){
         iniUi();
+        addKeyListener(this);
     }
 
 
